@@ -20,14 +20,14 @@
     "react-static": "^7.1.0"
   },
   "devDependencies": {
-    "@babel/cli": "^7.5.5",
-    "@babel/core": "^7.5.5",
-    "@babel/preset-env": "^7.5.5",
+    "@babel/cli": "^7.20.7",
+    "@babel/core": "^7.20.7",
+    "@babel/preset-env": "^7.20.2",
     "react-static": "^7.6.2"
   },
   "dependencies": {
-    "chalk": "^2.4.2",
-    "fs-extra": "^8.1.0"
+    "chalk": "^5.2.0",
+    "fs-extra": "^11.1.0"
   },
   "gitHead": "875004e6e75d36043382b8ec8bba27a766c1a83a"
 }

@@ -14,19 +14,19 @@
     "browserslist": "^4.6"
   },
   "devDependencies": {
-    "@babel/cli": "^7.5.5",
-    "@babel/core": "^7.5.5",
-    "@babel/preset-env": "^7.5.5",
-    "browserslist": "^4.6.6"
+    "@babel/cli": "^7.20.7",
+    "@babel/core": "^7.20.7",
+    "@babel/preset-env": "^7.20.2",
+    "browserslist": "^4.21.4"
   },
   "dependencies": {
-    "autoprefixer": "^9.7.4",
-    "css-loader": "^2.1.1",
-    "extract-css-chunks-webpack-plugin": "^4.6.0",
-    "less": "^3.9.0",
-    "less-loader": "^4.1.0",
-    "postcss-flexbugs-fixes": "^4.1.0",
-    "semver": "^6.3.0"
+    "autoprefixer": "^10.4.13",
+    "css-loader": "^6.7.3",
+    "extract-css-chunks-webpack-plugin": "^4.9.0",
+    "less": "^4.1.3",
+    "less-loader": "^11.1.0",
+    "postcss-flexbugs-fixes": "^5.0.2",
+    "semver": "^7.3.8"
   },
   "gitHead": "875004e6e75d36043382b8ec8bba27a766c1a83a"
 }

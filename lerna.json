@@ -1,10 +1,7 @@
 {
-  "packages": [
-    "packages/*"
-  ],
+  "packages": ["packages/*"],
   "version": "7.6.2",
   "npmClient": "yarn",
   "registry": "https://registry.npmjs.org/",
-  "useWorkspaces": true,
-  "lerna": "2.0.0-rc.4"
+  "useWorkspaces": true
 }

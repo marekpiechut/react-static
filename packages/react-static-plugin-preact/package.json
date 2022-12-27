@@ -15,16 +15,16 @@
     "preversion": "yarn build"
   },
   "peerDependencies": {
-    "preact": "^10.4.7"
+    "preact": "^10.11.3"
   },
   "dependencies": {
-    "preact": "^10.4.7"
+    "preact": "^10.11.3"
   },
   "devDependencies": {
-    "@babel/cli": "^7.5.5",
-    "@babel/core": "^7.5.5",
-    "@babel/preset-env": "^7.5.5",
-    "@prefresh/webpack": "^0.9.1"
+    "@babel/cli": "^7.20.7",
+    "@babel/core": "^7.20.7",
+    "@babel/preset-env": "^7.20.2",
+    "@prefresh/webpack": "^3.3.4"
   },
   "gitHead": "875004e6e75d36043382b8ec8bba27a766c1a83a"
 }

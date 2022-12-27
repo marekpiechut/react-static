@@ -15,14 +15,14 @@
     "preversion": "yarn build"
   },
   "devDependencies": {
-    "@babel/cli": "^7.12.1",
-    "@babel/core": "^7.12.3",
-    "@babel/preset-env": "^7.12.1"
+    "@babel/cli": "^7.20.7",
+    "@babel/core": "^7.20.7",
+    "@babel/preset-env": "^7.20.2"
   },
   "dependencies": {
-    "@mdx-js/loader": "^1.6.21",
-    "gray-matter": "^4.0.2",
-    "stringify-object": "^3.3.0"
+    "@mdx-js/loader": "^2.2.1",
+    "gray-matter": "^4.0.3",
+    "stringify-object": "^4.0.1"
   },
   "gitHead": "875004e6e75d36043382b8ec8bba27a766c1a83a"
 }
