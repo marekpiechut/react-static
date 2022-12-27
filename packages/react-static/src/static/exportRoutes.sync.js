@@ -1,4 +1,3 @@
-/* eslint-disable import/first, import/order */
 const { setIgnorePath } = require('../utils/binHelper')
 
 import path from 'path'

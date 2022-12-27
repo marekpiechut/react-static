@@ -1,4 +1,3 @@
-/* eslint-disable import/no-dynamic-require, react/no-danger, import/no-mutable-exports */
 import webpack from 'webpack'
 import chalk from 'chalk'
 import io from 'socket.io'
@@ -107,11 +106,11 @@ async function runExpressServer(state) {
         ...((state.config.devServer.watchOptions || {}).ignored || []),
       ],
     },
-    before: app => {
+    before: (app) => {
       // Since routes may change during dev, this function can rebuild all of the config
       // routes. It also references the original config when possible, to make sure it
       // uses any up to date getData callback generated from new or replacement routes.
-      buildDevRoutes = async newState => {
+      buildDevRoutes = async (newState) => {
         latestState = await fetchSiteData(newState)
 
         app.get('/__react-static__/siteData', async (req, res, next) => {
@@ -133,7 +132,7 @@ async function runExpressServer(state) {
             async (req, res, next) => {
               // Make sure we have the most up to date route from the config, not
               // an out of date object.
-              let route = latestState.routes.find(d => d.path === routePath)
+              let route = latestState.routes.find((d) => d.path === routePath)
               try {
                 if (!route) {
                   const err = new Error(
@@ -161,7 +160,7 @@ If this is a dynamic route, consider adding it to the prefetchExcludes list:
             }
           )
         })
-        return new Promise(resolve => setTimeout(resolve, 1))
+        return new Promise((resolve) => setTimeout(resolve, 1))
       }
 
       buildDevRoutes(state)
@@ -202,7 +201,7 @@ If this is a dynamic route, consider adding it to the prefetchExcludes list:
     {
       name: 'React-Static',
     },
-    stats => {
+    (stats) => {
       const messages = stats.toJson({}, true)
       const isSuccessful = !messages.errors.length
       const hasWarnings = messages.warnings.length
@@ -253,7 +252,7 @@ If this is a dynamic route, consider adding it to the prefetchExcludes list:
   }
 
   await new Promise((resolve, reject) => {
-    devServer.listen(port, null, err => {
+    devServer.listen(port, null, (err) => {
       if (err) {
         console.error(`Listening on ${port} failed: ${err}`)
         return reject(err)

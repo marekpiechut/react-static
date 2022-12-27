@@ -1,11 +1,12 @@
-/* eslint-disable import/no-dynamic-require, react/no-danger, import/no-mutable-exports */
-import webpack from 'webpack'
 import chalk from 'chalk'
+import webpack from 'webpack'
+
+import { time, timeEnd } from '../../utils'
+import { outputClientStats } from '../clientStats'
+import plugins from '../plugins'
+
 //
 import makeWebpackConfig from './makeWebpackConfig'
-import { outputClientStats } from '../clientStats'
-import { time, timeEnd } from '../../utils'
-import plugins from '../plugins'
 
 export default async function buildProductionBundles(state) {
   // Build static pages and JSON

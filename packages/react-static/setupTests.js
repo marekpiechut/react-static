@@ -1,6 +1,7 @@
 import 'raf/polyfill'
 
-/* eslint import/no-extraneous-dependencies: ["error", {"optionalDependencies": false}] */
+/* eslint import/no-extraneous-dependencies: ["error", {"optionalDependencies":
+ * false}] */
 const Enzyme = require('enzyme')
 const EnzymeAdapter = require('enzyme-adapter-react-16')
 

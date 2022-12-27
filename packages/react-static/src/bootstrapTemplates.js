@@ -1,5 +1,3 @@
-/* eslint-disable import/no-dynamic-require */
-
 const { registerTemplates } = require('./browser')
 
 const { default: templates, notFoundTemplate } = require(process.env

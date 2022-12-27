@@ -1,5 +1,3 @@
-/* eslint-disable import/no-dynamic-require */
-
 import nodePath from 'path'
 import chokidar from 'chokidar'
 import resolveFrom from 'resolve-from'
