@@ -98,16 +98,12 @@ export default (async function exportRoute(state) {
 
   // This routeInfo will be saved to disk. It should only include the
   // data and hashes to construct all of the props later.
-  const routeInfo = await plugins.routeInfo(
-    route,
-    state,
-    {
-      template,
-      sharedHashesByProp,
-      data,
-      path: routePath,
-    }
-  )
+  const routeInfo = await plugins.routeInfo(route, state, {
+    template,
+    sharedHashesByProp,
+    data,
+    path: routePath,
+  })
 
   // This embeddedRouteInfo will be inlined into the HTML for this route.
   // It should include all of the data, including shared data
@@ -146,9 +142,9 @@ export default (async function exportRoute(state) {
   if (route.redirect) {
     FinalComp = () => <Redirect fromPath={route.path} to={route.redirect} />
   } else {
-    FinalComp = props => (
+    FinalComp = (props) => (
       <ReportChunks
-        report={chunkName => {
+        report={(chunkName) => {
           // if we are building to a absolute path we must make the detected
           // chunkName relative and matching to the one we set in
           // generateTemplates
@@ -167,7 +163,7 @@ export default (async function exportRoute(state) {
     )
   }
 
-  const renderToStringAndExtract = comp => {
+  const renderToStringAndExtract = (comp) => {
     // Rend the app to string!
     const appHtml = renderToString(comp)
     const { scripts, stylesheets, css } = flushChunks(clientStats, {

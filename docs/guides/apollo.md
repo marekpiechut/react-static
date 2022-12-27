@@ -97,7 +97,7 @@ export default {
         getData: () => ({
           products,
         }),
-        children: products.map(product => ({
+        children: products.map((product) => ({
           path: `/${product.seoName}`,
           template: 'src/pages/Product',
           getData: () => ({

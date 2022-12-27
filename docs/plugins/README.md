@@ -119,8 +119,8 @@ The file (for either environment) must:
 Basic plugin example:
 
 ```javascript
-export default pluginOptions => ({
-  myCustomAPIMethod: options => {
+export default (pluginOptions) => ({
+  myCustomAPIMethod: (options) => {
     console.log('hello world')
   },
 })

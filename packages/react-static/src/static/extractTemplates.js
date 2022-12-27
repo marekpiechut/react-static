@@ -12,7 +12,7 @@ export default (async function extractTemplates(state) {
   const templates = []
   let notFoundPending = true
 
-  routes.forEach(route => {
+  routes.forEach((route) => {
     if (!route.template) {
       return
     }

@@ -6,7 +6,7 @@ const { DefaultDocument } = require('./components/RootComponents')
 const { poolAll } = require('../utils')
 const exportRoute = require('./exportRoute').default
 
-process.on('message', async state => {
+process.on('message', async (state) => {
   try {
     const { routes } = state
     // Get config again

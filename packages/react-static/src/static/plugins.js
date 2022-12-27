@@ -1,19 +1,19 @@
 import { getHooks, reduceHooks } from '../utils'
 
 const hooks = {
-  afterGetConfig: state => {
+  afterGetConfig: (state) => {
     const hooks = getHooks(state.plugins, 'afterGetConfig')
     return reduceHooks(hooks, { sync: true })(state)
   },
-  beforePrepareBrowserPlugins: state => {
+  beforePrepareBrowserPlugins: (state) => {
     const hooks = getHooks(state.plugins, 'beforePrepareBrowserPlugins')
     return reduceHooks(hooks)(state)
   },
-  afterPrepareBrowserPlugins: state => {
+  afterPrepareBrowserPlugins: (state) => {
     const hooks = getHooks(state.plugins, 'afterPrepareBrowserPlugins')
     return reduceHooks(hooks)(state)
   },
-  beforePrepareRoutes: state => {
+  beforePrepareRoutes: (state) => {
     const hooks = getHooks(state.plugins, 'beforePrepareRoutes')
     return reduceHooks(hooks)(state)
   },
@@ -21,11 +21,11 @@ const hooks = {
     const hooks = getHooks(state.plugins, 'getRoutes')
     return reduceHooks(hooks)(routes, state)
   },
-  normalizeRoute: state => {
+  normalizeRoute: (state) => {
     const hooks = getHooks(state.plugins, 'normalizeRoute')
-    return route => reduceHooks(hooks, { sync: true })(route, state)
+    return (route) => reduceHooks(hooks, { sync: true })(route, state)
   },
-  afterPrepareRoutes: state => {
+  afterPrepareRoutes: (state) => {
     const hooks = getHooks(state.plugins, 'afterPrepareRoutes')
     return reduceHooks(hooks)(state)
   },
@@ -33,17 +33,17 @@ const hooks = {
     const hooks = getHooks(state.plugins, 'webpack')
     return reduceHooks(hooks, { sync: true })(config, state)
   },
-  afterBundle: state => {
+  afterBundle: (state) => {
     const hooks = getHooks(state.plugins, 'afterBundle')
     return reduceHooks(hooks)(state)
   },
-  afterDevServerStart: state => {
+  afterDevServerStart: (state) => {
     const hooks = getHooks(state.plugins, 'afterDevServerStart')
     return reduceHooks(hooks)(state)
   },
   routeInfo: (routeInfo, state, storedRouteInfo) => {
     const hooks = getHooks(state.plugins, 'routeInfo')
-    return reduceHooks(hooks)(storedRouteInfo, {routeInfo, state})
+    return reduceHooks(hooks)(storedRouteInfo, { routeInfo, state })
   },
   beforeRenderToElement: (Comp, state) => {
     const hooks = getHooks(state.plugins, 'beforeRenderToElement')
@@ -69,11 +69,11 @@ const hooks = {
     const hooks = getHooks(state.plugins, 'beforeDocumentToFile')
     return reduceHooks(hooks)(html, state)
   },
-  afterExport: state => {
+  afterExport: (state) => {
     const hooks = getHooks(state.plugins, 'afterExport')
     return reduceHooks(hooks)(state)
   },
-  plugins: state => {
+  plugins: (state) => {
     const hooks = getHooks(state.plugins, 'plugins')
     return reduceHooks(hooks)(state)
   },
@@ -81,10 +81,10 @@ const hooks = {
 
 export default hooks
 
-export const validatePlugin = plugin => {
+export const validatePlugin = (plugin) => {
   const validHookKeys = Object.keys(hooks)
   const hookKeys = Object.keys(plugin.hooks)
-  const badKeys = hookKeys.filter(key => !validHookKeys.includes(key))
+  const badKeys = hookKeys.filter((key) => !validHookKeys.includes(key))
   if (badKeys.length) {
     throw new Error(
       `Unknown plugin hooks: "${badKeys.join(', ')}" found in plugin: ${

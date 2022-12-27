@@ -17,15 +17,17 @@ For a more detailed example, see the [react-static-plugin-react-router](/package
 ```javascript
 // browser.api.js
 
-export default pluginOptions => ({
-  Root: PreviousRoot => ({ children, ...rest }) => {
-    return (
-      // A wrapper div around the app Root!
-      <div {...rest}>
-        <PreviousRoot>{children}</PreviousRoot>
-      </div>
-    )
-  },
+export default (pluginOptions) => ({
+  Root:
+    (PreviousRoot) =>
+    ({ children, ...rest }) => {
+      return (
+        // A wrapper div around the app Root!
+        <div {...rest}>
+          <PreviousRoot>{children}</PreviousRoot>
+        </div>
+      )
+    },
 })
 ```
 
@@ -44,14 +46,16 @@ Decorate the Routes component used in React Static.
 ```javascript
 // browser.api.js
 
-export default pluginOptions => ({
-  Routes: PreviousRoutes => ({ children, ...rest }) => {
-    return (
-      // A wrapper div around Routes!
-      <div {...rest}>
-        <PreviousRoutes>{children}</PreviousRoutes>
-      </div>
-    )
-  },
+export default (pluginOptions) => ({
+  Routes:
+    (PreviousRoutes) =>
+    ({ children, ...rest }) => {
+      return (
+        // A wrapper div around Routes!
+        <div {...rest}>
+          <PreviousRoutes>{children}</PreviousRoutes>
+        </div>
+      )
+    },
 })
 ```

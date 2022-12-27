@@ -2,7 +2,7 @@ import path from 'path'
 import fs from 'fs-extra'
 import { chunkNameFromFile } from '../utils/chunkBuilder'
 
-export default async state => {
+export default async (state) => {
   const {
     config: { paths },
     templates,
@@ -55,7 +55,7 @@ export const notFoundTemplate = ${JSON.stringify(templates[0])}
 // Template Map
 export default {
   ${templates
-    .map(template => `'${template}': require('${template}').default`)
+    .map((template) => `'${template}': require('${template}').default`)
     .join(',\n')}
 }
 

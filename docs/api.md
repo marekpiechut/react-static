@@ -92,7 +92,7 @@ export default () => {
     <div>
       <h1>Top 100 Spotify Songs</h1>
       <ul>
-        {songs.map(song => (
+        {songs.map((song) => (
           <li key={song.id}>{song.title}</li>
         ))}
       </ul>

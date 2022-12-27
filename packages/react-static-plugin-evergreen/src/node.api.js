@@ -2,7 +2,7 @@ import React from 'react'
 import { extractStyles } from 'evergreen-ui'
 
 export default () => ({
-  headElements: elements => {
+  headElements: (elements) => {
     const { css, hydrationScript } = extractStyles()
     return [
       ...elements,

@@ -22,14 +22,14 @@ export default (async function start(state = {}) {
   console.log(`Starting Development Server...`)
 
   // Use a callback (a subscription)
-  getConfig(state, async state => {
+  getConfig(state, async (state) => {
     state = await fetchSiteData(state)
     state = await createIndexPlaceholder(state)
     state = await generateBrowserPlugins(state)
 
     // Use a callback (a subscription)
     // eslint-disable-next-line
-    await getRoutes(state, async state => {
+    await getRoutes(state, async (state) => {
       state = await extractTemplates(state)
       state = await generateTemplates(state)
       state = await runDevServer(state)

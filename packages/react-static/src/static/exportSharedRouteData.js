@@ -20,7 +20,7 @@ export default (async function exportSharedRouteData(state) {
     time(chalk.green('[\u2713] Shared Route Data Exported'))
 
     await poolAll(
-      sharedDataArr.map(cachedProp => async () => {
+      sharedDataArr.map((cachedProp) => async () => {
         await fs.outputFile(
           path.join(STATIC_DATA, `${cachedProp[1].hash}.json`),
           JSON.stringify(cachedProp[1].data)

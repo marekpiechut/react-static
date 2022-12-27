@@ -42,7 +42,7 @@ import React from 'react'
 import { Link } from '@reach/router'
 import { Hits, InstantSearch, SearchBox } from 'react-instantsearch/dom'
 
-const Post = props => {
+const Post = (props) => {
   const { id, title } = props.hit
   return (
     <div>

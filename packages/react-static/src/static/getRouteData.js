@@ -12,7 +12,7 @@ export default async function getRouteData(
   const newSharedData = {}
 
   if (route.sharedData) {
-    Object.keys(route.sharedData).forEach(name => {
+    Object.keys(route.sharedData).forEach((name) => {
       const sharedPiece = route.sharedData[name]
       sharedDataByHash.set(sharedPiece.hash, sharedPiece)
       sharedHashesByProp[name] = sharedPiece.hash

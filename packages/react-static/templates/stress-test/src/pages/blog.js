@@ -18,7 +18,7 @@ const PaginationLink = styled
       border: 1px solid rgba(0, 0, 0, 0.1);
       margin: 0 0.5rem 0.5rem 0;
       padding: 0.2rem 0.3rem;
-      opacity: ${props => (props.isCurrent ? 0.5 : 1)};
+      opacity: ${(props) => (props.isCurrent ? 0.5 : 1)};
     `
   : Link
 
@@ -31,7 +31,7 @@ export default () => {
       </Head>
       <h1>It's blog time.</h1>
       <ul>
-        {posts.map(post => (
+        {posts.map((post) => (
           <li key={post.id}>
             <Link to={`/blog/post/${post.id}/`}>{post.title}</Link>
           </li>
@@ -40,7 +40,7 @@ export default () => {
 
       <h5>Pages</h5>
       <div>
-        {Array.from(new Array(totalPages), (d, i) => i).map(page => {
+        {Array.from(new Array(totalPages), (d, i) => i).map((page) => {
           page += 1
           return (
             <span key={page}>

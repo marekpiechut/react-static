@@ -21,7 +21,7 @@ const DEFAULT_EXTENSIONS = ['.js', '.jsx']
 // Retrieves the static.config.js from the current project directory
 export default function getConfig(
   state,
-  callback = async config => {
+  callback = async (config) => {
     if (state.debug) {
       console.log('getConfig():')
       console.log(state)
@@ -92,7 +92,8 @@ export function buildConfig(state, config = {}) {
   }
 
   // Use the root to resolve all other relative paths
-  const resolvePath = relativePath => nodePath.resolve(paths.root, relativePath)
+  const resolvePath = (relativePath) =>
+    nodePath.resolve(paths.root, relativePath)
 
   // Resolve and replace all pathss
   const DIST =
@@ -226,7 +227,7 @@ export function buildConfig(state, config = {}) {
     'react-static-browser-plugins.js'
   )
 
-  const resolvePlugin = originalLocation => {
+  const resolvePlugin = (originalLocation) => {
     let options = {}
     if (Array.isArray(originalLocation)) {
       options = originalLocation[1] || {}

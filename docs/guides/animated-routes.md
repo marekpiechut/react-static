@@ -33,7 +33,7 @@ const App = () => (
               enter={{ transform: 'translateY(0px)', opacity: 1 }}
               leave={{ transform: 'translateY(100px)', opacity: 0 }}
             >
-              {item => props => {
+              {(item) => (props) => {
                 return <animated.div style={props}>{element}</animated.div>
               }}
             </Transition>

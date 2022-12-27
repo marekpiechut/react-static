@@ -19,7 +19,7 @@ rebuildRoutes.current = () => {
   throw new Error('Routes cannot be rebuilt yet!')
 }
 
-export default async function getRoutes(state, callback = d => d) {
+export default async function getRoutes(state, callback = (d) => d) {
   rebuildRoutes.current = async () => {
     const { silent, incremental } = state
 
@@ -102,7 +102,7 @@ export function normalizeAllRoutes(routes, state) {
 
     // If the route has children, we do a depth-first recurse
     if (normalizedRoute.children) {
-      normalizedRoute.children.forEach(childRoute =>
+      normalizedRoute.children.forEach((childRoute) =>
         recurseRoute(childRoute, normalizedRoute)
       )
     }
@@ -141,7 +141,7 @@ export function normalizeAllRoutes(routes, state) {
     }
   }
 
-  routes.forEach(route => recurseRoute(route))
+  routes.forEach((route) => recurseRoute(route))
 
   const normalizedRoutes = Object.values(routesByPath)
 

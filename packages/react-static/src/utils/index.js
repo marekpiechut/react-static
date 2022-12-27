@@ -11,7 +11,7 @@ export const ChalkColor = {
   npm: '#cb3837',
 }
 
-export const findAvailablePort = start =>
+export const findAvailablePort = (start) =>
   PortFinder.getPortPromise({
     port: start,
     stopPort: start + 1000,

@@ -20,7 +20,7 @@ const inflightRouteInfo = {}
 const inflightPropHashes = {}
 let prefetchExcludes = []
 
-export const addPrefetchExcludes = excludes => {
+export const addPrefetchExcludes = (excludes) => {
   if (!Array.isArray(excludes)) {
     throw new Error('Excludes must be an array of strings/regex!')
   }
@@ -33,7 +33,7 @@ const requestPool = createPool({
 
 // Plugins
 export const pluginHooks = []
-export const registerPlugins = newPlugins => {
+export const registerPlugins = (newPlugins) => {
   pluginHooks.splice(0, Infinity, ...newPlugins)
 }
 
@@ -41,27 +41,27 @@ export const registerPlugins = newPlugins => {
 export const templates = {}
 export const templatesByPath = {}
 export const templateErrorByPath = {}
-export const onReloadTemplates = fn => {
+export const onReloadTemplates = (fn) => {
   onReloadTemplates.listeners.push(fn)
   return () => {
     onReloadTemplates.listeners = onReloadTemplates.listeners.filter(
-      d => d !== fn
+      (d) => d !== fn
     )
   }
 }
 onReloadTemplates.listeners = []
 
 export const registerTemplates = async (tmps, notFoundKey) => {
-  Object.keys(templatesByPath).forEach(key => {
+  Object.keys(templatesByPath).forEach((key) => {
     delete templatesByPath[key]
   })
-  Object.keys(templateErrorByPath).forEach(key => {
+  Object.keys(templateErrorByPath).forEach((key) => {
     delete templateErrorByPath[key]
   })
-  Object.keys(templates).forEach(key => {
+  Object.keys(templates).forEach((key) => {
     delete templates[key]
   })
-  Object.keys(tmps).forEach(key => {
+  Object.keys(tmps).forEach((key) => {
     templates[key] = tmps[key]
     if (!templates[key]) {
       console.warn(
@@ -81,7 +81,7 @@ export const registerTemplates = async (tmps, notFoundKey) => {
     await prefetch(window.location.pathname)
   }
 
-  onReloadTemplates.listeners.forEach(fn => fn())
+  onReloadTemplates.listeners.forEach((fn) => fn())
 
   if (
     typeof document !== 'undefined' &&
@@ -96,14 +96,14 @@ export const registerTemplateForPath = (path, template) => {
   templatesByPath[path] = templates[template]
 }
 
-export const onReloadClientData = fn => {
-  Object.keys(routeErrorByPath).forEach(key => {
+export const onReloadClientData = (fn) => {
+  Object.keys(routeErrorByPath).forEach((key) => {
     delete routeErrorByPath[key]
   })
   onReloadClientData.listeners.push(fn)
   return () => {
     onReloadClientData.listeners = onReloadClientData.listeners.filter(
-      d => d !== fn
+      (d) => d !== fn
     )
   }
 }
@@ -159,7 +159,7 @@ function startPreloader() {
   const run = () => {
     const els = [].slice.call(document.getElementsByTagName('a'))
 
-    els.forEach(el => {
+    els.forEach((el) => {
       const href = el.getAttribute('href')
       const prefetchOption = el.getAttribute('data-prefetch')
       const shouldPrefetch =
@@ -185,8 +185,8 @@ async function reloadClientData() {
     routeErrorByPath,
     inflightRouteInfo,
     inflightPropHashes,
-  ].forEach(part => {
-    Object.keys(part).forEach(key => {
+  ].forEach((part) => {
+    Object.keys(part).forEach((key) => {
       delete part[key]
     })
   })
@@ -194,7 +194,7 @@ async function reloadClientData() {
   // Prefetch the current route's data before you reload routes
   await prefetch(window.location.pathname)
 
-  onReloadClientData.listeners.forEach(fn => fn())
+  onReloadClientData.listeners.forEach((fn) => fn())
 }
 
 export async function getRouteInfo(path, { priority } = {}) {
@@ -295,7 +295,7 @@ export async function prefetchData(path, { priority } = {}) {
 
   // Request the template and loop over the routeInfo.sharedHashesByProp, requesting each prop
   await Promise.all(
-    Object.keys(routeInfo.sharedHashesByProp).map(async key => {
+    Object.keys(routeInfo.sharedHashesByProp).map(async (key) => {
       const hash = routeInfo.sharedHashesByProp[key]
 
       // Check the sharedDataByHash first
@@ -417,7 +417,7 @@ export function isPrefetchableRoute(path) {
   }
 
   if (
-    prefetchExcludes.some(exclude => {
+    prefetchExcludes.some((exclude) => {
       if (typeof exclude === 'string' && path.startsWith(exclude)) {
         return true
       }
@@ -460,11 +460,11 @@ export function isPrefetchableRoute(path) {
 }
 
 export const plugins = {
-  Root: Comp => {
+  Root: (Comp) => {
     const hooks = getHooks(pluginHooks, 'Root')
     return reduceHooks(hooks, { sync: true })(Comp)
   },
-  Routes: Comp => {
+  Routes: (Comp) => {
     const hooks = getHooks(pluginHooks, 'Routes')
     return reduceHooks(hooks, { sync: true })(Comp)
   },

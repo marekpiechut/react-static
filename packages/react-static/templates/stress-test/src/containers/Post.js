@@ -17,7 +17,7 @@ const Post = styled
         font-weight: bold;
       }
     `
-  : props => <div {...props} />
+  : (props) => <div {...props} />
 
 export default () => {
   const { post } = useRouteData()

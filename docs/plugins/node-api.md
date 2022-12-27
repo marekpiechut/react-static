@@ -27,7 +27,7 @@ An **async** function to modify the CLI state before browser plugins are prepare
 - Returns the new CLI `state`
 
 ```javascript
-beforePrepareBrowserPlugins: async state => {
+beforePrepareBrowserPlugins: async (state) => {
   // Use or modify the CLI state
   return newState
 }
@@ -42,7 +42,7 @@ An **async** function to modify the CLI state after preparing browser plugins.
 - Returns the new CLI `state`
 
 ```javascript
-afterPrepareBrowserPlugins: async state => {
+afterPrepareBrowserPlugins: async (state) => {
   // Use or modify the CLI state
   return newState
 }
@@ -57,7 +57,7 @@ An **async** function to modify the CLI state before preparing routes.
 - Returns the new CLI `state`
 
 ```javascript
-beforePrepareRoutes: async state => {
+beforePrepareRoutes: async (state) => {
   // Use or modify the CLI state
   return newState
 }
@@ -90,7 +90,7 @@ An **async** function to modify the CLI state before preparing routes.
 - Returns the new CLI `state`
 
 ```javascript
-afterPrepareRoutes: async state => {
+afterPrepareRoutes: async (state) => {
   // Use or modify the CLI state
   return newState
 }
@@ -147,8 +147,8 @@ The source for all default loaders can be found in [webpack/rules/ directory](ht
 ```javascript
 // node.api.js
 
-export default pluginOptions => ({
-  webpack: config => {
+export default (pluginOptions) => ({
+  webpack: (config) => {
     config.module.rules = [
       // Your own rules here...
     ]
@@ -187,8 +187,8 @@ export default pluginOptions => ({
 
 import AwesomeWebpackPlugin from 'awesome-webpack-plugin'
 
-export default pluginOptions => ({
-  webpack: config => {
+export default (pluginOptions) => ({
+  webpack: (config) => {
     config.plugins.push(new AwesomeWebpackPlugin())
     return config
   },
@@ -200,7 +200,7 @@ export default pluginOptions => ({
 ```javascript
 // node.api.js
 
-export default pluginOptions => ({
+export default (pluginOptions) => ({
   webpack: [
     (config, { defaultLoaders }) => {
       config.module.rules = [
@@ -223,7 +223,7 @@ export default pluginOptions => ({
       ]
       return config
     },
-    config => {
+    (config) => {
       console.log(config.module.rules) // Log out the final set of rules
     },
   ],
@@ -241,8 +241,8 @@ After a completed bundle, run any asynchronous function.
 ```javascript
 // node.api.js
 
-export default pluginOptions => ({
-  afterBundle: async state => {
+export default (pluginOptions) => ({
+  afterBundle: async (state) => {
     // Use or alter the state of the CLI
     return state
   },
@@ -261,8 +261,8 @@ Modify the `App` **component** before it is rendered to an element via `<App />`
 ```javascript
 // node.api.js
 
-export default pluginOptions => ({
-  afterDevServerStart: async state => {
+export default (pluginOptions) => ({
+  afterDevServerStart: async (state) => {
     // Use or modify the CLI state
     return newState
   },
@@ -282,8 +282,8 @@ An **async** function to modify the routeInfo after it has been generated.
 ```javascript
 // node.api.js
 
-export default pluginOptions => ({
-  routeInfo: async (storedRouteInfo, {routeInfo, state}) => {
+export default (pluginOptions) => ({
+  routeInfo: async (storedRouteInfo, { routeInfo, state }) => {
     storedRouteInfo = {
       ...storedRouteInfo,
       data: {
@@ -309,9 +309,9 @@ An **async** function to modify the CLI state after starting the development ser
 ```javascript
 // node.api.js
 
-export default pluginOptions => ({
+export default (pluginOptions) => ({
   beforeRenderToElement: async (App, state) => {
-    const NewApp = props => {
+    const NewApp = (props) => {
       return <App {...props} />
     }
 
@@ -333,7 +333,7 @@ Modify the rendered `<App />` element before it is rendered to HTML.
 ```javascript
 // node.api.js
 
-export default pluginOptions => ({
+export default (pluginOptions) => ({
   beforeRenderToHtml: async (element, state) => {
     // You must return an element (already rendered), not a component
     const newApp = <div>{element}</div>
@@ -354,7 +354,7 @@ Modify the props that will passed to the Document's `<html>` element.
 ```javascript
 // node.api.js
 
-export default pluginOptions => ({
+export default (pluginOptions) => ({
   htmlProps: async (props, state) => {
     return {
       ...props,
@@ -376,7 +376,7 @@ Add elements to the `<head>` of the statically generated page.
 ```javascript
 // node.api.js
 
-export default pluginOptions => ({
+export default (pluginOptions) => ({
   headElements: async (elements, state) => {
     return [
       ...elements,
@@ -399,7 +399,7 @@ Modify the app `html` string before it is injected into the `Document` component
 ```javascript
 // node.api.js
 
-export default pluginOptions => ({
+export default (pluginOptions) => ({
   beforeHtmlToDocument: async (html, state) => {
     // html is a string here. You can do whatever you like with it!
     return html
@@ -419,7 +419,7 @@ Modify the final `html` string before it is written to disk.
 ```javascript
 // node.api.js
 
-export default pluginOptions => ({
+export default (pluginOptions) => ({
   beforeDocumentToFile: async (html, state) => {
     // html is a string here. You can do whatever you like with it!
     return html
@@ -438,8 +438,8 @@ After a completed build and export, run any asynchronous function.
 ```javascript
 // node.api.js
 
-export default pluginOptions => ({
-  afterExport: async state => {
+export default (pluginOptions) => ({
+  afterExport: async (state) => {
     // Use or alter the state of the CLI
     return state
   },
@@ -453,7 +453,7 @@ An array of plugins that this plugin depends on. Follows the same format as `sta
 ```javascript
 // node.api.js
 
-export default pluginOptions => ({
+export default (pluginOptions) => ({
   plugins: [
     'another-plugin',
     [

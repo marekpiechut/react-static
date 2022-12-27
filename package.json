@@ -10,7 +10,7 @@
     "start:docs": "cd www && yarn && yarn start",
     "build:docs": "cd www && yarn && yarn build",
     "serve:docs": "serve www/dist -p 3000",
-    "test": "yarn format && lerna run test",
+    "test": "lerna run test",
     "format": "prettier docs/** --write && lerna run format --stream",
     "ci": "yarn build && yarn test"
   },

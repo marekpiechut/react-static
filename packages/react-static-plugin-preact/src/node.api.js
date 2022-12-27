@@ -1,7 +1,7 @@
 import PreactRefreshPlugin from '@prefresh/webpack'
 
 export default () => ({
-  webpack: config => {
+  webpack: (config) => {
     config.resolve.alias = {
       ...(config.resolve.alias || {}),
       react$: 'preact/compat',
@@ -10,7 +10,9 @@ export default () => ({
 
     // removing react hot-loader from entries
     // and adding prefresh to plugins
-    const newEntries = config.entry.filter(x => x !== 'react-hot-loader/patch')
+    const newEntries = config.entry.filter(
+      (x) => x !== 'react-hot-loader/patch'
+    )
     config.entry = newEntries
 
     config.plugins.push(new PreactRefreshPlugin())

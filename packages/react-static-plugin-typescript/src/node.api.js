@@ -4,7 +4,7 @@ import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin'
 import convertPathsToAliases from 'convert-tsconfig-paths-to-webpack-aliases'
 import { parseConfigFileTextToJson, findConfigFile, sys } from 'typescript'
 
-export default options => ({
+export default (options) => ({
   afterGetConfig: getReactStaticConfigExtender(),
   webpack: webpack(options),
 })
@@ -82,7 +82,7 @@ function webpack(options) {
 }
 
 function getReactStaticConfigExtender() {
-  return state => ({
+  return (state) => ({
     ...state,
     config: {
       ...state.config,

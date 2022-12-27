@@ -17,7 +17,7 @@ export default async function copyPublicFolder(state) {
 
   await fs.copy(PUBLIC, DIST, {
     dereference: true,
-    filter: file => file !== INDEX,
+    filter: (file) => file !== INDEX,
   })
 
   timeEnd(chalk.green('[\u2713] Public directory copied'))

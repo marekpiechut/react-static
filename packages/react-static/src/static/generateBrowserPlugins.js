@@ -4,7 +4,7 @@ import fs from 'fs-extra'
 //
 import corePlugins from './plugins'
 
-export default async state => {
+export default async (state) => {
   state = await corePlugins.beforePrepareBrowserPlugins(state)
 
   const { plugins, config } = state
@@ -12,10 +12,10 @@ export default async state => {
   // A deduped list of pluginImports
   const pluginImports = []
 
-  const recurse = plugins =>
+  const recurse = (plugins) =>
     // Return an array of plugins
     `[${plugins
-      .map(plugin => {
+      .map((plugin) => {
         const { browserLocation } = plugin
 
         // Add the plugin to the list of pluginImports

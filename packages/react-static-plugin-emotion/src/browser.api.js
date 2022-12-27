@@ -8,9 +8,10 @@ const cache = createCache({
 })
 
 export default () => ({
-  beforeRenderToElement: App => props => (
-    <CacheProvider value={cache}>
-      <App {...props} />
-    </CacheProvider>
-  ),
+  beforeRenderToElement: (App) => (props) =>
+    (
+      <CacheProvider value={cache}>
+        <App {...props} />
+      </CacheProvider>
+    ),
 })

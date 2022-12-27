@@ -24,7 +24,7 @@ export default {
 
     // Group posts by UserID
     const postsByUserID = {}
-    posts.forEach(post => {
+    posts.forEach((post) => {
       postsByUserID[post.userId] = postsByUserID[post.userId] || []
       postsByUserID[post.userId].push(post)
     })
@@ -50,12 +50,12 @@ export default {
         }),
       }),
       // Make the routes for each blog post
-      ...posts.map(post => ({
+      ...posts.map((post) => ({
         path: `/blog/post/${post.id}`,
         template: 'src/containers/Post',
         getData: () => ({
           post,
-          user: users.find(user => user.id === post.userId),
+          user: users.find((user) => user.id === post.userId),
         }),
       })),
     ]

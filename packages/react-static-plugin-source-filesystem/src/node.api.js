@@ -7,7 +7,7 @@ import { rebuildRoutes } from 'react-static/node'
 export default ({
   location,
   pathPrefix,
-  createRoute = d => d,
+  createRoute = (d) => d,
   extensions = [],
 }) => ({
   getRoutes: async (routes, state) => {
@@ -28,7 +28,7 @@ export default ({
     // Make a glob extension to get all pages with the set extensions from the
     // pages directory
     const globExtensions = [...config.extensions, ...extensions]
-      .map(ext => `${ext.slice(1)}`) // cut off the period of the extension
+      .map((ext) => `${ext.slice(1)}`) // cut off the period of the extension
       .join(',') // join them for the glob string
     const pagesGlob = nodePath.join(location, '**', `*.{${globExtensions}}`)
     // Get the pages
@@ -39,10 +39,10 @@ export default ({
       console.log('Importing routes from directory...')
     }
 
-    const handle = pages =>
+    const handle = (pages) =>
       // Turn each page into a route
       Promise.all(
-        pages.map(page => {
+        pages.map((page) => {
           const originalPath = page
           // Glob path will always have unix style path, convert to windows if necessary
           const template = nodePath.resolve(page)
