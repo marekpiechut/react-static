@@ -12,7 +12,8 @@
     "serve:docs": "serve www/dist -p 3000",
     "test": "lerna run test",
     "format": "prettier docs/** --write && lerna run format --stream",
-    "ci": "yarn build && yarn test"
+    "ci": "yarn build && yarn test",
+    "prepare": "husky install"
   },
   "workspaces": [
     "packages/*"
