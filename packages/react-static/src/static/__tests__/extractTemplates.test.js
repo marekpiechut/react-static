@@ -1,6 +1,6 @@
 import path from 'path'
-import slash from 'slash'
 import extractTemplates from '../extractTemplates'
+import { fs } from '../../utils'
 
 const config = {
   paths: {
@@ -63,7 +63,7 @@ test('absolute routes path are relative and use the __react_static_root__ alias'
   })
 
   expect(templates[0]).toBe(
-    slash(
+    fs.slash(
       `__react_static_root__/${path.relative(
         config.paths.ROOT,
         '/home/src/templates/NotFound'

@@ -85,25 +85,25 @@ function common(state) {
     optimization: {
       sideEffects: true,
       minimize: true,
-      minimizer: [
-        new TerserPlugin({
-          cache: true,
-          parallel: true,
-          exclude: /\.min\.js/,
-          ...config.terser,
-          sourceMap:
-            config.productionSourceMaps || config.terser.sourceMap || debug,
-          terserOptions: {
-            ie8: false,
-            ...config.terser.terserOptions,
-            mangle: { safari10: true, ...config.terser.terserOptions.mangle },
-            parse: { ecma: 8, ...config.terser.terserOptions.parse },
-            compress: { ecma: 5, ...config.terser.terserOptions.compress },
-            output: { ecma: 5, ...config.terser.terserOptions.output },
-          },
-        }),
-        new OptimizeCSSAssetsPlugin({}),
-      ],
+      // minimizer: [
+      //   new TerserPlugin({
+      //     cache: true,
+      //     parallel: true,
+      //     exclude: /\.min\.js/,
+      //     ...config.terser,
+      //     sourceMap:
+      //       config.productionSourceMaps || config.terser.sourceMap || debug,
+      //     terserOptions: {
+      //       ie8: false,
+      //       ...config.terser.terserOptions,
+      //       mangle: { safari10: true, ...config.terser.terserOptions.mangle },
+      //       parse: { ecma: 8, ...config.terser.terserOptions.parse },
+      //       compress: { ecma: 5, ...config.terser.terserOptions.compress },
+      //       output: { ecma: 5, ...config.terser.terserOptions.output },
+      //     },
+      //   }),
+      //   new OptimizeCSSAssetsPlugin({}),
+      // ],
       splitChunks,
     },
     performance: {
@@ -118,7 +118,7 @@ function common(state) {
         NODE_MODULES,
         SRC,
         DIST,
-        ...[NODE_MODULES, SRC, DIST].map(d =>
+        ...[NODE_MODULES, SRC, DIST].map((d) =>
           DIST.startsWith(ROOT) ? path.resolve(__dirname, d) : path.resolve(d)
         ),
         'node_modules',
@@ -141,12 +141,12 @@ function common(state) {
       extrackCSSChunks,
       new CaseSensitivePathsPlugin(),
       analyze && new BundleAnalyzerPlugin(),
-    ].filter(d => d),
+    ].filter((d) => d),
     devtool: debug || config.productionSourceMaps ? 'source-map' : false,
   }
 }
 
-export default function(state) {
+export default function (state) {
   const {
     stage,
     config: { paths },
@@ -169,7 +169,7 @@ export default function(state) {
       const resolved = path.resolve(context, request)
       if (
         [/react-static(\\|\/)lib(\\|\/)browser/, /webpack-flush-chunks/].some(
-          d => d.test(resolved)
+          (d) => d.test(resolved)
         )
       ) {
         return callback(null, `commonjs ${resolved}`)

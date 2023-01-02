@@ -1,6 +1,9 @@
+/**
+ * @jest-environment jsdom
+ */
 import React from 'react'
-import { mount } from 'enzyme'
-import makeHeadWithMeta from '../HeadWithMeta'
+import makeHeadWithMeta, { InlineStyle } from '../HeadWithMeta'
+import renderer from 'react-test-renderer'
 
 describe('HeadWithMeta', () => {
   let data
@@ -40,11 +43,13 @@ describe('HeadWithMeta', () => {
   test('when route is a static route', async () => {
     const HeadWithMeta = await makeHeadWithMeta(data)
 
-    const headWithMeta = mount(
-      <HeadWithMeta className="body">
-        <meta name="description" content="Helmet application" />
-      </HeadWithMeta>
-    )
+    const headWithMeta = renderer
+      .create(
+        <HeadWithMeta className="body">
+          <meta name="description" content="Helmet application" />
+        </HeadWithMeta>
+      )
+      .toJSON()
 
     expect(headWithMeta).toMatchSnapshot()
   })
@@ -53,11 +58,13 @@ describe('HeadWithMeta', () => {
     data.route.redirect = true
     const HeadWithMeta = await makeHeadWithMeta(data)
 
-    const headWithMeta = mount(
-      <HeadWithMeta className="body">
-        <meta name="description" content="Helmet application" />
-      </HeadWithMeta>
-    )
+    const headWithMeta = renderer
+      .create(
+        <HeadWithMeta className="body">
+          <meta name="description" content="Helmet application" />
+        </HeadWithMeta>
+      )
+      .toJSON()
 
     expect(headWithMeta).toMatchSnapshot()
   })
@@ -66,11 +73,13 @@ describe('HeadWithMeta', () => {
     data.config.inlineCss = true
     const HeadWithMeta = await makeHeadWithMeta(data)
 
-    const headWithMeta = mount(
-      <HeadWithMeta className="body">
-        <meta name="description" content="Helmet application" />
-      </HeadWithMeta>
-    )
+    const headWithMeta = renderer
+      .create(
+        <HeadWithMeta className="body">
+          <meta name="description" content="Helmet application" />
+        </HeadWithMeta>
+      )
+      .toJSON()
 
     expect(headWithMeta).toMatchSnapshot()
   })
@@ -78,12 +87,14 @@ describe('HeadWithMeta', () => {
   test('when route has title as child', async () => {
     const HeadWithMeta = await makeHeadWithMeta(data)
 
-    const headWithMeta = mount(
-      <HeadWithMeta className="body">
-        <title>Document Title</title>
-        <meta name="description" content="Helmet application" />
-      </HeadWithMeta>
-    )
+    const headWithMeta = renderer
+      .create(
+        <HeadWithMeta className="body">
+          <title>Document Title</title>
+          <meta name="description" content="Helmet application" />
+        </HeadWithMeta>
+      )
+      .toJSON()
 
     expect(headWithMeta).toMatchSnapshot()
   })
@@ -97,12 +108,14 @@ describe('HeadWithMeta', () => {
       },
     })
 
-    const headWithMeta = mount(
-      <HeadWithMeta className="body">
-        <title>Document Title</title>
-        <meta name="description" content="Helmet application" />
-      </HeadWithMeta>
-    )
+    const headWithMeta = renderer
+      .create(
+        <HeadWithMeta className="body">
+          <title>Document Title</title>
+          <meta name="description" content="Helmet application" />
+        </HeadWithMeta>
+      )
+      .toJSON()
 
     expect(headWithMeta).toMatchSnapshot()
   })

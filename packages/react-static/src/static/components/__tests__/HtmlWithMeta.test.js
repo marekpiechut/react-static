@@ -1,5 +1,5 @@
 import React from 'react'
-import { mount } from 'enzyme'
+import renderer from 'react-test-renderer'
 import makeHtmlWithMeta from '../HtmlWithMeta'
 
 describe('HtmlWithMeta', () => {
@@ -9,13 +9,15 @@ describe('HtmlWithMeta', () => {
       plugins: [],
     })
 
-    const htmlWithMeta = mount(
-      <HtmlWithMeta className="body">
-        <head>
-          <title>React Static</title>
-        </head>
-      </HtmlWithMeta>
-    )
+    const htmlWithMeta = renderer
+      .create(
+        <HtmlWithMeta className="body">
+          <head>
+            <title>React Static</title>
+          </head>
+        </HtmlWithMeta>
+      )
+      .toJSON()
 
     expect(htmlWithMeta).toMatchSnapshot()
   })

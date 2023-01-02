@@ -4,6 +4,7 @@ import { performance } from 'perf_hooks'
 
 // Export all shared utils
 export * from '../browser/utils'
+export * as fs from './fs'
 
 export { default as progress } from './progress'
 export const ChalkColor = {

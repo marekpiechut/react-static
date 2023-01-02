@@ -1,7 +1,6 @@
 import chalk from 'chalk'
-import slash from 'slash'
 import path from 'path'
-import { time, timeEnd, is404Path } from '../utils'
+import { time, timeEnd, is404Path, fs } from '../utils'
 
 export default (async function extractTemplates(state) {
   const { config, routes, incremental } = state
@@ -17,7 +16,7 @@ export default (async function extractTemplates(state) {
       return
     }
 
-    route.template = slash(
+    route.template = fs.slash(
       `__react_static_root__/${path.relative(
         config.paths.ROOT,
         route.template

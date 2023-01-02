@@ -1,6 +1,9 @@
+/**
+ * @jest-environment jsdom
+ */
 import React from 'react'
-import { mount } from 'enzyme'
 import makeBodyWithMeta from '../BodyWithMeta'
+import renderer from 'react-test-renderer'
 
 describe('BodyWithMeta', () => {
   test('when route is a static route', async () => {
@@ -17,11 +20,13 @@ describe('BodyWithMeta', () => {
       plugins: [],
     })
 
-    const bodyWithMeta = mount(
-      <BodyWithMeta className="body">
-        <div>static page</div>
-      </BodyWithMeta>
-    )
+    const bodyWithMeta = renderer
+      .create(
+        <BodyWithMeta className="body">
+          <div>static page</div>
+        </BodyWithMeta>
+      )
+      .toJSON()
 
     expect(bodyWithMeta).toMatchSnapshot()
   })
@@ -40,11 +45,13 @@ describe('BodyWithMeta', () => {
       plugins: [],
     })
 
-    const bodyWithMeta = mount(
-      <BodyWithMeta className="body">
-        <div>static page</div>
-      </BodyWithMeta>
-    )
+    const bodyWithMeta = renderer
+      .create(
+        <BodyWithMeta className="body">
+          <div>static page</div>
+        </BodyWithMeta>
+      )
+      .toJSON()
 
     expect(bodyWithMeta).toMatchSnapshot()
   })

@@ -1,51 +1,41 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`BodyWithMeta when route is a redirect route 1`] = `
-<Component
+<body
   className="body"
+  lang="en"
 >
-  <body
-    className="body"
-    lang="en"
-  >
-    <div>
-      static page
-    </div>
-  </body>
-</Component>
+  <div>
+    static page
+  </div>
+</body>
 `;
 
 exports[`BodyWithMeta when route is a static route 1`] = `
-<Component
+<body
   className="body"
+  lang="en"
 >
-  <body
-    className="body"
-    lang="en"
-  >
-    <div>
-      static page
-    </div>
-    <script
-      dangerouslySetInnerHTML={
-        Object {
-          "__html": "script",
-        }
+  <div>
+    static page
+  </div>
+  <script
+    dangerouslySetInnerHTML={
+      {
+        "__html": "script",
       }
-      type="text/javascript"
-    />
-    <script
-      defer={true}
-      key="main.js"
-      src="/assets/path/main.js"
-      type="text/javascript"
-    />
-    <script
-      defer={true}
-      key="bootstrap.js"
-      src="/assets/path/bootstrap.js"
-      type="text/javascript"
-    />
-  </body>
-</Component>
+    }
+    type="text/javascript"
+  />
+  <script
+    defer={true}
+    src="/assets/path/main.js"
+    type="text/javascript"
+  />
+  <script
+    defer={true}
+    src="/assets/path/bootstrap.js"
+    type="text/javascript"
+  />
+</body>
 `;

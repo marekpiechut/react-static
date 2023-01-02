@@ -1,8 +1,8 @@
 import path from 'path'
-import slash from 'slash'
 import fs from 'fs-extra'
 //
 import corePlugins from './plugins'
+import utils from '../utils'
 
 export default async (state) => {
   state = await corePlugins.beforePrepareBrowserPlugins(state)
@@ -24,7 +24,7 @@ export default async (state) => {
           : -1
         if (pluginIndex === -1 && browserLocation) {
           pluginImports.push(
-            slash(
+            utils.fs.slash(
               `__react_static_root__/${path.relative(
                 config.paths.ROOT,
                 browserLocation
@@ -38,7 +38,7 @@ export default async (state) => {
 
         // IIF to return the final plugin
         return `{
-        location: "${slash(
+        location: "${utils.fs.slash(
           `__react_static_root__/${path.relative(config.paths.ROOT, location)}`
         )}",
         plugins: ${recurse(plugins || [])},
