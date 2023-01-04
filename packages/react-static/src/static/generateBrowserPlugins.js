@@ -2,7 +2,7 @@ import path from 'path'
 import fs from 'fs-extra'
 //
 import corePlugins from './plugins'
-import utils from '../utils'
+import * as utils from '../utils'
 
 export default async (state) => {
   state = await corePlugins.beforePrepareBrowserPlugins(state)

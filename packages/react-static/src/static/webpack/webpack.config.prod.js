@@ -5,7 +5,8 @@ import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer'
 import TerserPlugin from 'terser-webpack-plugin'
 import nodeExternals from 'webpack-node-externals'
 import ExtractCssChunks from 'extract-css-chunks-webpack-plugin'
-import OptimizeCSSAssetsPlugin from 'optimize-css-assets-webpack-plugin'
+import CssMinimizerPlugin from 'css-minimizer-webpack-plugin'
+
 import resolveFrom from 'resolve-from'
 //
 import rules from './rules'
@@ -85,6 +86,7 @@ function common(state) {
     optimization: {
       sideEffects: true,
       minimize: true,
+      minimizer: [`...`, new CssMinimizerPlugin()],
       // minimizer: [
       //   new TerserPlugin({
       //     cache: true,
