@@ -15,7 +15,7 @@
     "preversion": "yarn build"
   },
   "peerDependencies": {
-    "typescript": "^4.9.4"
+    "typescript": ">=4.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.20.7",
