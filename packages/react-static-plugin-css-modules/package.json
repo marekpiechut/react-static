@@ -16,8 +16,11 @@
   },
   "devDependencies": {
     "@babel/cli": "^7.20.7",
-    "@babel/core": "^7.20.7",
-    "@babel/preset-env": "^7.20.2"
+    "@babel/core": "^7.20.12",
+    "@babel/preset-env": "^7.20.2",
+    "eslint": "^8.31.0",
+    "eslint-config-prettier": "^8.6.0",
+    "husky": "^8.0.3"
   },
   "dependencies": {
     "css-loader": "^6.7.3",
